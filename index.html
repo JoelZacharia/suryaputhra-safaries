@@ -79,43 +79,56 @@
             display: block;
         }
 
-        /* ===== NAVBAR ===== */
+        /* ===== ENHANCED NAVBAR ===== */
         .navbar {
             background: rgba(255, 255, 255, 0.98) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-            padding: 1rem 0;
-            transition: var(--transition);
+            backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+            padding: 1.2rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         .navbar.scrolled {
             padding: 0.75rem 0;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.12);
+            box-shadow: 0 4px 40px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 0.99) !important;
         }
 
         .navbar-brand {
             display: flex;
             align-items: center;
+            position: relative;
+            z-index: 10;
         }
 
         .navbar-brand img {
-            height: 55px;
+            height: 60px;
             width: auto;
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .navbar-brand:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08) rotate(-2deg);
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+        }
+
+        .navbar-nav {
+            align-items: center;
         }
 
         .nav-link {
             color: var(--text) !important;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.95rem;
-            padding: 0.5rem 1rem !important;
-            margin: 0 0.25rem;
+            padding: 0.65rem 1.25rem !important;
+            margin: 0 0.15rem;
             position: relative;
-            transition: var(--transition);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .nav-link::before {
@@ -125,32 +138,160 @@
             left: 50%;
             transform: translateX(-50%);
             width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: var(--transition);
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.05), rgba(255, 107, 53, 0.05));
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-link:hover::after {
+            opacity: 1;
         }
 
         .nav-link:hover,
         .nav-link.active {
-            color: var(--accent) !important;
+            color: var(--primary) !important;
+            transform: translateY(-2px);
         }
 
         .nav-link:hover::before,
         .nav-link.active::before {
-            width: calc(100% - 2rem);
+            width: calc(100% - 2.5rem);
         }
 
+        .nav-link.active {
+            font-weight: 700;
+            color: var(--primary) !important;
+        }
+
+        /* Enhanced Mobile Menu */
         .navbar-toggler {
-            border: none;
-            padding: 0.5rem;
+            border: 2px solid var(--primary);
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar-toggler:hover {
+            background: var(--primary);
         }
 
         .navbar-toggler:focus {
-            box-shadow: none;
+            box-shadow: 0 0 0 0.25rem rgba(13, 71, 161, 0.25);
         }
 
         .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2813, 71, 161, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            width: 1.5em;
+            height: 1.5em;
+        }
+
+        .navbar-toggler:hover .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* Mobile Menu Styling */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: var(--white);
+                margin-top: 1rem;
+                padding: 1.5rem;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border: 1px solid var(--border);
+            }
+
+            .nav-link {
+                margin: 0.5rem 0;
+                padding: 0.75rem 1rem !important;
+                text-align: center;
+            }
+
+            .nav-link::before {
+                display: none;
+            }
+
+            .nav-link:hover {
+                background: linear-gradient(135deg, rgba(13, 71, 161, 0.1), rgba(255, 107, 53, 0.1));
+                transform: translateX(5px);
+            }
+
+            .navbar-nav .btn {
+                margin-top: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Top Contact Bar */
+        .top-contact-bar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1040;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            top: 45px;
+        }
+
+        .top-contact-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem;
+        }
+
+        .top-contact-link:hover {
+            color: var(--white);
+            transform: translateX(3px);
+        }
+
+        .social-top-link {
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: rgba(255, 255, 255, 0.9);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-top-link:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 991px) {
+            .navbar {
+                top: 0;
+            }
         }
 
         /* ===== BUTTONS ===== */
@@ -671,7 +812,37 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Navbar -->
+    <!-- Top Contact Bar -->
+    <div class="top-contact-bar d-none d-lg-block">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center py-2">
+                <div class="d-flex align-items-center gap-4">
+                    <a href="tel:+919961741661" class="top-contact-link">
+                        <i class="bi bi-telephone-fill me-2"></i>
+                        <span>+91 9961741661</span>
+                    </a>
+                    <a href="mailto:Info@suryaputhrasafaries.com" class="top-contact-link">
+                        <i class="bi bi-envelope-fill me-2"></i>
+                        <span>Info@suryaputhrasafaries.com</span>
+                    </a>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="text-muted small">Follow Us:</span>
+                    <a href="https://www.facebook.com/groups/1394493844234708/" target="_blank" class="social-top-link">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/suryaputhra_safaries_official/" target="_blank" class="social-top-link">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://youtube.com/@suryaputhrasafaries7511" target="_blank" class="social-top-link">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand" href="#home" onclick="navigateTo('home', event)">
@@ -683,19 +854,34 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#home" onclick="navigateTo('home', event)">Home</a>
+                        <a class="nav-link active" href="#home" onclick="navigateTo('home', event)">
+                            <i class="bi bi-house-door me-1 d-lg-none"></i>
+                            <span>Home</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about" onclick="navigateTo('about', event)">About</a>
+                        <a class="nav-link" href="#about" onclick="navigateTo('about', event)">
+                            <i class="bi bi-info-circle me-1 d-lg-none"></i>
+                            <span>About</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#gallery" onclick="navigateTo('gallery', event)">Gallery</a>
+                        <a class="nav-link" href="#gallery" onclick="navigateTo('gallery', event)">
+                            <i class="bi bi-images me-1 d-lg-none"></i>
+                            <span>Gallery</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact" onclick="navigateTo('contact', event)">Contact</a>
+                        <a class="nav-link" href="#contact" onclick="navigateTo('contact', event)">
+                            <i class="bi bi-telephone me-1 d-lg-none"></i>
+                            <span>Contact</span>
+                        </a>
                     </li>
                     <li class="nav-item ms-lg-3">
-                        <a href="#booking" class="btn btn-primary-custom" onclick="navigateTo('booking', event)">Book Now</a>
+                        <a href="#booking" class="btn btn-primary-custom position-relative" onclick="navigateTo('booking', event)">
+                            <i class="bi bi-calendar-check me-2"></i>
+                            Book Now
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -1270,6 +1456,4 @@
         }
     </script>
 </body>
-</html>
-
 </html>
