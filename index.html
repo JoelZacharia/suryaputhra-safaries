@@ -3,818 +3,1273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suryaputhra Safaries | Luxury Travel</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Suryaputhra Safaries | Premium Travel Services</title>
+    <meta name="description" content="Professional travel agency offering hotel bookings, cab services, and tour packages across South India since 2016">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Bootstrap CSS & Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
+    
+    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    
     <style>
         :root {
-            --primary: #1a1a1a;      /* Deep Charcoal */
-            --accent: #c5a059;       /* Champagne Gold */
-            --light: #f4f4f4;        /* Off-white */
+            --primary: #0d47a1;
+            --primary-dark: #0a3d91;
+            --primary-light: #1565c0;
+            --accent: #ff6b35;
+            --accent-hover: #e55a2b;
+            --dark: #1a1a2e;
+            --dark-light: #2d2d44;
+            --text: #2c3e50;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
             --white: #ffffff;
-            --text-dark: #333333;
-            --text-light: #888888;
+            --border: #e9ecef;
+            --success: #28a745;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        html, body {
-            overflow-x: hidden !important;
-            width: 100%;
-            position: relative;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
         body {
-            font-family: 'Lato', sans-serif;
-            color: var(--text-dark);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
             background-color: var(--white);
             overflow-x: hidden;
-            line-height: 1.8;
-            max-width: 100vw;
+            line-height: 1.7;
+            font-size: 16px;
         }
-        
-        * {
-            max-width: 100%;
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+            color: var(--dark);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
         }
-        
-        img, video {
+
+        a {
+            text-decoration: none;
+            transition: var(--transition);
+            color: inherit;
+        }
+
+        img {
             max-width: 100%;
             height: auto;
-        }
-        
-        .container, .container-fluid {
-            overflow-x: hidden;
+            display: block;
         }
 
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* --- Enhanced Bootstrap Navigation --- */
+        /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
+            background: rgba(255, 255, 255, 0.98) !important;
             backdrop-filter: blur(10px);
-            padding: 15px 0;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-            transition: all 0.3s;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+            transition: var(--transition);
         }
-        .navbar-brand img { 
-            height: 60px; 
-            transition: transform 0.3s;
+
+        .navbar.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.12);
         }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 55px;
+            width: auto;
+            transition: var(--transition);
+        }
+
         .navbar-brand:hover img {
             transform: scale(1.05);
         }
+
         .nav-link {
-            color: var(--primary) !important;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0 15px;
-            font-weight: 700;
+            color: var(--text) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem !important;
+            margin: 0 0.25rem;
             position: relative;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
-        .nav-link::after {
-            content: ''; 
-            position: absolute; 
-            bottom: 0; 
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 0; 
+            width: 0;
             height: 2px;
-            background: var(--accent); 
-            transition: width 0.3s;
+            background: var(--accent);
+            transition: var(--transition);
         }
-        .nav-link:hover::after, .nav-link.active::after { 
-            width: 80%; 
-        }
-        .nav-link:hover, .nav-link.active {
+
+        .nav-link:hover,
+        .nav-link.active {
             color: var(--accent) !important;
         }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: calc(100% - 2rem);
+        }
+
         .navbar-toggler {
             border: none;
-            padding: 0.25rem 0.5rem;
+            padding: 0.5rem;
         }
+
         .navbar-toggler:focus {
             box-shadow: none;
         }
-        
-        /* --- Enhanced Bootstrap Buttons --- */
-        .btn-luxury {
-            background: var(--primary);
-            color: var(--white);
-            padding: 12px 35px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            border: 2px solid var(--primary);
-            border-radius: 0;
-            transition: all 0.4s;
-            font-weight: 600;
-        }
-        .btn-luxury:hover {
-            background: transparent;
-            color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .btn-luxury:focus {
-            box-shadow: 0 0 0 0.25rem rgba(26, 26, 26, 0.25);
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
 
-        /* --- Hero Section --- */
-        .hero-section {
-            height: 100vh;
-            min-height: 600px;
-            position: relative;
-            overflow: hidden;
-            background: #000;
-            width: 100%;
-            max-width: 100vw;
+        /* ===== BUTTONS ===== */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: var(--white);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            color: var(--white);
+        }
+
+        .btn-outline-primary-custom {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-outline-primary-custom:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+        }
+
         .hero-video {
             position: absolute;
-            top: 50%; left: 50%;
-            width: 100%; 
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: translate(-50%, -50%);
-            opacity: 0.6;
-            min-width: 100%;
-            min-height: 100%;
+            z-index: 0;
+            opacity: 0.3;
         }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.85) 0%, rgba(25, 118, 210, 0.75) 100%);
+            z-index: 1;
+        }
+
         .hero-content {
             position: relative;
             z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
             color: var(--white);
+            padding: 2rem 0;
         }
+
         .hero-subtitle {
             font-size: 1rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 20px;
-            animation: fadeInDown 1s ease;
-        }
-        .hero-title {
-            font-size: 4.5rem;
-            color: var(--white);
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.3s forwards;
-            opacity: 0;
-        }
-
-        /* --- Sections --- */
-        .section-padding { padding: 100px 0; }
-        .section-header { text-align: center; margin-bottom: 70px; }
-        .section-header span {
-            display: block;
-            color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-size: 0.8rem;
-            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
             font-weight: 700;
+            line-height: 1.2;
         }
-        .section-header h2 { font-size: 3rem; margin: 0; }
 
-        /* --- About --- */
-        .about-img-wrapper {
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-heading {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== CARDS ===== */
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid var(--border);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotateY(360deg);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+        }
+
+        .feature-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-image-wrapper {
             position: relative;
-            padding: 20px;
-        }
-        .about-img-main {
-            width: 100%;
-            border-radius: 5px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-        .about-img-small {
-            position: absolute;
-            bottom: -30px; right: -30px;
-            width: 60%;
-            border: 10px solid var(--white);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
         }
 
-        /* --- Gallery Grid (Fix for Portrait) --- */
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+        .about-image-wrapper img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
         }
+
+        .about-image-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
         .gallery-item {
             position: relative;
-            height: 300px; /* Fixed height forces uniformity */
+            border-radius: 15px;
             overflow: hidden;
+            aspect-ratio: 4/3;
             cursor: pointer;
         }
+
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* This crops portrait images to fit the square/rect */
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            object-fit: cover;
+            transition: var(--transition);
         }
-        .gallery-item:hover img { transform: scale(1.1); }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
         .gallery-overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.4);
-            display: flex;
-            align-items: center; justify-content: center;
-            opacity: 0;
-            transition: 0.4s;
-        }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .gallery-text {
-            color: var(--white);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 1px solid var(--white);
-            padding: 10px 20px;
-        }
-
-        /* --- Services --- */
-        /* --- Enhanced Bootstrap Cards --- */
-        .service-box {
-            padding: 40px;
-            border: 1px solid #eee;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: var(--white);
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            border-radius: 0;
-        }
-        .service-box:hover {
-            border-color: var(--accent);
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        }
-        .service-icon { 
-            font-size: 2.5rem; 
-            color: var(--accent); 
-            margin-bottom: 25px; 
-            transition: transform 0.4s;
-        }
-        .service-box:hover .service-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-        .service-box h4 { 
-            font-size: 1.2rem; 
-            margin-bottom: 15px; 
-            letter-spacing: 1px; 
-        }
-        .service-box p { 
-            font-size: 0.95rem; 
-            color: var(--text-light); 
-            margin: 0; 
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
         }
 
-        /* --- Booking --- */
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* ===== BOOKING FORM ===== */
         .booking-section {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
             color: var(--white);
-            padding: 100px 0;
+            padding: 5rem 0;
         }
-        .booking-form input, .booking-form select, .booking-form textarea {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            border-radius: 0;
+
+        .booking-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+
+        .form-control-custom,
+        .form-select-custom {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: var(--white);
-            padding: 15px 0;
-            margin-bottom: 30px;
+            padding: 0.875rem 1.25rem;
+            border-radius: 10px;
+            transition: var(--transition);
         }
-        .booking-form input::placeholder { color: rgba(255,255,255,0.4); text-transform: uppercase; font-size: 0.8rem; }
-        .booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus {
-            background: transparent;
-            box-shadow: none;
+
+        .form-control-custom:focus,
+        .form-select-custom:focus {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--accent);
             color: var(--white);
+            box-shadow: 0 0 0 0.25rem rgba(255, 107, 53, 0.25);
+            outline: none;
         }
-        .booking-form select option { background: var(--primary); color: var(--white); }
 
-        /* --- Footer --- */
+        .form-control-custom::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-select-custom option {
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        /* ===== FOOTER ===== */
         footer {
-            background: #111;
-            color: #888;
-            padding: 80px 0 40px;
-            font-size: 0.9rem;
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 4rem 0 2rem;
         }
-        .footer-logo img { height: 50px; margin-bottom: 20px; opacity: 0.8; }
-        .footer-heading { color: var(--white); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; font-size: 0.9rem; }
-        .footer-links a { display: block; color: #888; text-decoration: none; margin-bottom: 10px; transition: 0.3s; cursor: pointer; }
-        .footer-links a:hover { color: var(--accent); padding-left: 5px; }
-        .footer-links a[href^="tel:"], .footer-links a[href^="mailto:"] { 
-            color: #888 !important; 
-        }
-        .footer-links a[href^="tel:"]:hover, .footer-links a[href^="mailto:"]:hover { 
-            color: var(--accent) !important; 
-        }
-        .social-icon { color: var(--white); margin-right: 20px; font-size: 1.1rem; transition: 0.3s; }
-        .social-icon:hover { color: var(--accent); }
 
-        /* --- Bootstrap Utility Enhancements --- */
-        .text-accent { color: var(--accent) !important; }
-        .bg-accent { background-color: var(--accent) !important; }
-        .border-accent { border-color: var(--accent) !important; }
-        
-        /* --- Enhanced Form Controls --- */
-        .form-control:focus, .form-select:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 0.25rem rgba(197, 160, 89, 0.25);
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 1.5rem;
+            filter: brightness(0) invert(1);
         }
-        
-        /* --- Bootstrap Card Enhancements --- */
-        .card {
-            border-radius: 0;
-            border: 1px solid #eee;
-            transition: all 0.3s;
+
+        .footer-heading {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .card:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            display: block;
+            margin-bottom: 0.75rem;
+            transition: var(--transition);
         }
-        
-        /* Mobile Responsive (Bootstrap Breakpoints) */
-        @media(max-width: 768px) {
-            .hero-title { font-size: 3rem; }
-            .about-img-small { display: none; }
-            .gallery-container { grid-template-columns: 1fr; }
-            .navbar-nav { text-align: center; }
-            .nav-link { margin: 5px 0; }
+
+        .footer-link:hover {
+            color: var(--accent);
+            padding-left: 5px;
         }
-        
-        /* Prevent horizontal scroll on all elements */
-        .row, .col, [class*="col-"] {
-            margin-left: 0;
-            margin-right: 0;
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            margin-right: 0.75rem;
+            transition: var(--transition);
         }
-        
-        .gallery-container {
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .gallery-thumb {
             width: 100%;
-            overflow-x: hidden;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0.8;
         }
-        
-        .carousel-item {
-            width: 100%;
-            max-width: 100vw;
+
+        .gallery-thumb:hover {
+            opacity: 1;
+            transform: scale(1.05);
         }
-        
-        /* Preloader */
+
+        /* ===== PRELOADER ===== */
         #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--white); z-index: 9999;
-            display: flex; justify-content: center; align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
         }
-        .loader-line {
-            width: 150px; height: 2px; background: #eee; position: relative; overflow: hidden;
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
         }
-        .loader-line::after {
-            content: ''; position: absolute; top: 0; left: -50%; width: 50%; height: 100%;
-            background: var(--accent); animation: loading 1s infinite linear;
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
-        @keyframes loading { 0% { left: -50%; } 100% { left: 150%; } }
+
+        /* ===== UTILITIES ===== */
+        .bg-light-custom {
+            background-color: var(--bg-light) !important;
+        }
+
+        .text-primary-custom {
+            color: var(--primary) !important;
+        }
+
+        .text-accent {
+            color: var(--accent) !important;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .nav-link {
+                padding: 0.75rem 1rem !important;
+            }
+        }
+
+        /* ===== PAGE VIEWS ===== */
+        .page-view {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page-view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== FIX BUGS ===== */
+        .container-fluid {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .row {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        .row > * {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     </style>
 </head>
 <body>
 
     <!-- Preloader -->
-    <div id="preloader"><div class="loader-line"></div></div>
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="#home" onclick="router.navigate('home', event); return false;">
-                <img src="img/logo.png" alt="Suryaputhra">
+            <a class="navbar-brand" href="#home" onclick="navigateTo('home', event)">
+                <img src="img/logo.png" alt="Suryaputhra Safaries Logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navContent">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link active" href="#home" onclick="router.navigate('home', event); return false;">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about" onclick="router.navigate('about', event); return false;">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery" onclick="router.navigate('gallery', event); return false;">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact" onclick="router.navigate('contact', event); return false;">Contact</a></li>
-                    <li class="nav-item ms-lg-4">
-                        <a href="#booking" class="btn-luxury text-decoration-none" onclick="router.navigate('booking', event); return false;">Book Now</a>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home" onclick="navigateTo('home', event)">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" onclick="navigateTo('about', event)">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery" onclick="navigateTo('gallery', event)">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" onclick="navigateTo('contact', event)">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="#booking" class="btn btn-primary-custom" onclick="navigateTo('booking', event)">Book Now</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main id="app">
-        
-        <!-- HOME -->
-        <div id="home" class="page-view">
-            <div class="hero-section">
-                <!-- Background Video -->
-                <video autoplay muted loop class="hero-video">
+    <!-- Main Content -->
+    <main>
+        <!-- HOME PAGE -->
+        <div id="home" class="page-view active">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <video autoplay muted loop class="hero-video" playsinline>
                     <source src="img/p4.mp4" type="video/mp4">
-                    <!-- Fallback image if video fails -->
-                    <img src="img/munnar.jpg" alt="Fallback">
                 </video>
-                
-                <div class="hero-content container">
-                    <span class="hero-subtitle">Trusted Travel Partner Since 2016</span>
-                    <h1 class="hero-title">Your Journey,<br>Our Expertise</h1>
-                    <p class="text-white mb-4" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px;">Travel to Munnar, Ooty, Wayanad & more with reliable hotel bookings and comfortable cab services</p>
-                    <div style="margin-top: 40px;">
-                        <a href="#booking" onclick="router.navigate('booking', event); return false;" class="btn-luxury bg-white text-dark border-white me-3 text-decoration-none">Book Your Trip</a>
-                        <a href="#contact" onclick="router.navigate('contact', event); return false;" class="btn-luxury bg-transparent border-white text-decoration-none">Contact Us</a>
+                <div class="hero-overlay"></div>
+                <div class="container">
+                    <div class="hero-content" data-aos="fade-up">
+                        <span class="hero-subtitle">Trusted Travel Partner Since 2016</span>
+                        <h1 class="hero-title">Suryaputhra Safaries</h1>
+                        <p class="hero-description">Experience the beauty of South India with our premium travel services. Hotel bookings, cab services, and complete tour packages to Munnar, Ooty, Wayanad, and more.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#booking" class="btn btn-accent" onclick="navigateTo('booking', event)">Book Your Trip</a>
+                            <a href="#contact" class="btn btn-outline-light" onclick="navigateTo('contact', event)">Contact Us</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Features -->
-            <section class="section-padding">
+            <!-- Features Section -->
+            <section class="section">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 mb-4" data-aos="fade-up">
-                            <div class="service-box h-100">
-                                <i class="fas fa-hotel service-icon"></i>
+                    <div class="section-title" data-aos="fade-up">
+                        <span class="section-subtitle">Our Services</span>
+                        <h2 class="section-heading">What We Offer</h2>
+                        <p class="section-description">Comprehensive travel solutions tailored to your needs</p>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-hotel"></i>
+                                </div>
                                 <h4>Hotel Reservations</h4>
-                                <p>We book verified hotels and resorts in Munnar, Ooty, Wayanad, Kodaikanal, Mysore, and other popular destinations. From budget stays to luxury resorts, we find the best deals for you.</p>
+                                <p>Verified hotels and resorts in Munnar, Ooty, Wayanad, Kodaikanal, Mysore, and other destinations. From budget stays to luxury resorts, we find the best deals for you.</p>
                             </div>
                         </div>
-                        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="service-box h-100">
-                                <i class="fas fa-car-side service-icon"></i>
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-car-front"></i>
+                                </div>
                                 <h4>Cab & Vehicle Services</h4>
-                                <p>We provide reliable cab services with experienced drivers who know the hill roads well. Sedans, SUVs, and travelers available for all your travel needs, including pickup and drop services.</p>
+                                <p>Reliable cab services with experienced drivers who know the hill roads well. Sedans, SUVs, and travelers available for all your travel needs, including pickup and drop services.</p>
                             </div>
                         </div>
-                        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="service-box h-100">
-                                <i class="fas fa-route service-icon"></i>
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-map"></i>
+                                </div>
                                 <h4>Complete Tour Packages</h4>
-                                <p>All-inclusive packages covering transportation, accommodation, and itinerary planning. We handle all the arrangements so you can enjoy your vacation stress-free.</p>
+                                <p>All-inclusive packages covering transportation, accommodation, and itinerary planning. We handle all arrangements so you can enjoy your vacation stress-free.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- About Teaser -->
-            <section class="section-padding bg-light">
+            <!-- About Preview -->
+            <section class="section bg-light-custom">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-lg-6 mb-5 mb-lg-0">
-                            <div class="about-img-wrapper">
-                                <!-- Integrating requested image -->
-                                <img src="img/surya.gif" class="about-img-main" alt="About Main">
-                                <img src="img/p1.jpg" class="about-img-small" alt="About Detail">
+                        <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                            <div class="about-image-wrapper">
+                                <img src="img/surya.gif" alt="About Suryaputhra Safaries">
                             </div>
                         </div>
-                        <div class="col-lg-5 offset-lg-1">
-                            <div class="section-header text-start">
-                                <span>Since 2016</span>
-                                <h2>We Create<br>Timeless Journeys</h2>
-                            </div>
-                            <p class="text-secondary mb-4">Based in Kunnamthanam, Kerala, we've been organizing memorable trips across South India since 2016. Whether it's a family vacation to Ooty, a honeymoon in Munnar, or an adventure in Wayanad, we handle everything—from hotel bookings to cab arrangements—so you can focus on creating memories.</p>
-                            <a href="#about" onclick="router.navigate('about', event); return false;" class="btn-luxury text-dark border-dark text-decoration-none">Read Our Story</a>
+                        <div class="col-lg-6" data-aos="fade-left">
+                            <span class="section-subtitle">About Us</span>
+                            <h2 class="section-heading text-start">Your Trusted Travel Partner</h2>
+                            <p class="mb-4">Based in Kunnamthanam, Kerala, we've been organizing memorable trips across South India since 2016. Whether it's a family vacation to Ooty, a honeymoon in Munnar, or an adventure in Wayanad, we handle everything—from hotel bookings to cab arrangements—so you can focus on creating memories.</p>
+                            <p class="mb-4">We know the best hotels, the safest routes, and the most scenic spots. Our local knowledge and relationships with hotel owners and cab operators mean we can offer you competitive prices and reliable service.</p>
+                            <a href="#about" class="btn btn-primary-custom" onclick="navigateTo('about', event)">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item" data-aos="zoom-in">
+                            <span class="stat-number">7+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Happy Travelers</span>
+                        </div>
+                        <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Destinations</span>
+                        </div>
+                        <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Satisfaction</span>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- ABOUT -->
-        <div id="about" class="page-view d-none">
-            <div class="section-padding container">
-                <div class="section-header">
-                    <span>Our Legacy</span>
-                    <h2>A Passion for Travel</h2>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center text-secondary">
-                        <p class="lead mb-5">Started in 2016, Suryaputhra Safaries was born from a simple idea: making travel easy and enjoyable for everyone.</p>
-                        <p>We're a small team based in Kunnamthanam, Changanassery. Over the past 7+ years, we've helped hundreds of families, couples, and groups explore the beautiful destinations of South India. We know the best hotels, the safest routes, and the most scenic spots. Our local knowledge and relationships with hotel owners and cab operators mean we can offer you competitive prices and reliable service.</p>
-                        <p class="mt-4">When you book with us, you're not just getting a trip—you're getting peace of mind. We're available 24/7 during your journey to assist with any questions or issues.</p>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <!-- Integrating p2.jpg and p3.jpg -->
-                    <div class="col-md-6 mb-4"><img src="img/p2.jpg" class="img-fluid rounded" alt="Team 1"></div>
-                    <div class="col-md-6 mb-4"><img src="img/p3.jpg" class="img-fluid rounded" alt="Team 2"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- GALLERY -->
-        <div id="gallery" class="page-view d-none">
-            <div class="section-padding bg-light">
+        <!-- ABOUT PAGE -->
+        <div id="about" class="page-view">
+            <section class="section" style="padding-top: 120px;">
                 <div class="container">
-                    <div class="section-header">
-                        <span>Portfolio</span>
-                        <h2>Captured Moments</h2>
+                    <div class="section-title" data-aos="fade-up">
+                        <span class="section-subtitle">Our Story</span>
+                        <h2 class="section-heading">A Passion for Travel</h2>
                     </div>
-                    <!-- Gallery Grid with Object-Fit for Portraits -->
-                    <div class="gallery-container">
-                        <div class="gallery-item">
-                            <img src="img/p1.jpg" alt="Portrait 1">
-                            <div class="gallery-overlay"><span class="gallery-text">Adventures</span></div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8" data-aos="fade-up">
+                            <p class="lead text-center mb-5">Started in 2016, Suryaputhra Safaries was born from a simple idea: making travel easy and enjoyable for everyone.</p>
+                            <p class="mb-4">We're a small team based in Kunnamthanam, Changanassery. Over the past 7+ years, we've helped hundreds of families, couples, and groups explore the beautiful destinations of South India. We know the best hotels, the safest routes, and the most scenic spots.</p>
+                            <p class="mb-4">Our local knowledge and relationships with hotel owners and cab operators mean we can offer you competitive prices and reliable service. When you book with us, you're not just getting a trip—you're getting peace of mind. We're available 24/7 during your journey to assist with any questions or issues.</p>
                         </div>
-                        <div class="gallery-item">
-                            <img src="img/p2.jpg" alt="Portrait 2">
-                            <div class="gallery-overlay"><span class="gallery-text">Memories</span></div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-md-6 mb-4" data-aos="zoom-in">
+                            <img src="img/p2.jpg" alt="Our Team" class="img-fluid rounded shadow">
                         </div>
-                        <div class="gallery-item">
-                            <img src="img/p3.jpg" alt="Portrait 3">
-                            <div class="gallery-overlay"><span class="gallery-text">Smiles</span></div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="img/munnar.jpg" alt="Landscape 1">
-                            <div class="gallery-overlay"><span class="gallery-text">Munnar</span></div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="img/ooty.jpg" alt="Landscape 2">
-                            <div class="gallery-overlay"><span class="gallery-text">Ooty</span></div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="img/wayanad.jpg" alt="Landscape 3">
-                            <div class="gallery-overlay"><span class="gallery-text">Wayanad</span></div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="img/mysore.jpg" alt="Landscape 4">
-                            <div class="gallery-overlay"><span class="gallery-text">Mysore</span></div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="img/kodaikanal.jpg" alt="Landscape 5">
-                            <div class="gallery-overlay"><span class="gallery-text">Kodaikanal</span></div>
+                        <div class="col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                            <img src="img/p3.jpg" alt="Our Services" class="img-fluid rounded shadow">
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
 
-        <!-- CONTACT & BOOKING -->
-        <div id="contact" class="page-view d-none">
-            <div class="section-padding container">
-                <div class="row">
-                        <div class="col-lg-5 mb-5">
-                        <div class="section-header text-start">
-                            <span>Get in Touch</span>
-                            <h2>Let's Plan Your<br>Trip Together</h2>
+        <!-- GALLERY PAGE -->
+        <div id="gallery" class="page-view">
+            <section class="section bg-light-custom" style="padding-top: 120px;">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <span class="section-subtitle">Portfolio</span>
+                        <h2 class="section-heading">Our Gallery</h2>
+                        <p class="section-description">Explore the beautiful destinations we serve</p>
+                    </div>
+                    <div class="gallery-grid">
+                        <div class="gallery-item" data-aos="zoom-in">
+                            <img src="img/p1.jpg" alt="Gallery Image 1">
+                            <div class="gallery-overlay">
+                                <span class="text-white">Adventure</span>
+                            </div>
                         </div>
-                        <p class="text-secondary mb-4">Have questions about our packages? Need a custom quote? Want to check availability? We're here to help!</p>
-                        <div class="mb-4">
-                            <h5 class="mb-2"><i class="bi bi-geo-alt me-2 text-accent"></i>Our Office</h5>
-                            <p class="text-secondary mb-0">Kunnamthanam, Changanassery</p>
-                            <p class="text-secondary">Kottayam District, Kerala - 686 510</p>
-                            <a href="https://maps.app.goo.gl/nBLzXtphiPG9hTyUA" target="_blank" class="text-accent small">View on Google Maps →</a>
+                        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                            <img src="img/p2.jpg" alt="Gallery Image 2">
+                            <div class="gallery-overlay">
+                                <span class="text-white">Memories</span>
+                            </div>
                         </div>
-                        <div class="mb-4">
-                            <h5 class="mb-2"><i class="bi bi-telephone me-2 text-accent"></i>Phone & WhatsApp</h5>
-                            <p class="text-secondary mb-0">+91 9961741661</p>
-                            <p class="text-secondary small">Call or WhatsApp us anytime</p>
+                        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                            <img src="img/p3.jpg" alt="Gallery Image 3">
+                            <div class="gallery-overlay">
+                                <span class="text-white">Experiences</span>
+                            </div>
                         </div>
-                        <div class="mb-4">
-                            <h5 class="mb-2"><i class="bi bi-envelope me-2 text-accent"></i>Email</h5>
-                            <p class="text-secondary mb-0">Info@suryaputhrasafaries.com</p>
-                            <p class="text-secondary small">We typically respond within 24 hours</p>
+                        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                            <img src="img/munnar.jpg" alt="Munnar">
+                            <div class="gallery-overlay">
+                                <span class="text-white">Munnar</span>
+                            </div>
                         </div>
-                        <div class="mt-4">
-                            <h5 class="mb-3">Follow Us</h5>
-                            <div>
-                                <a href="https://www.facebook.com/groups/1394493844234708/" target="_blank" class="btn btn-outline-dark me-2 mb-2"><i class="fab fa-facebook-f me-2"></i>Facebook</a>
-                                <a href="https://www.instagram.com/suryaputhra_safaries_official/" target="_blank" class="btn btn-outline-dark me-2 mb-2"><i class="fab fa-instagram me-2"></i>Instagram</a>
-                                <a href="https://youtube.com/@suryaputhrasafaries7511" target="_blank" class="btn btn-outline-dark mb-2"><i class="fab fa-youtube me-2"></i>YouTube</a>
+                        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                            <img src="img/ooty.jpg" alt="Ooty">
+                            <div class="gallery-overlay">
+                                <span class="text-white">Ooty</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500">
+                            <img src="img/wayanad.jpg" alt="Wayanad">
+                            <div class="gallery-overlay">
+                                <span class="text-white">Wayanad</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600">
+                            <img src="img/mysore.jpg" alt="Mysore">
+                            <div class="gallery-overlay">
+                                <span class="text-white">Mysore</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="700">
+                            <img src="img/kodaikanal.jpg" alt="Kodaikanal">
+                            <div class="gallery-overlay">
+                                <span class="text-white">Kodaikanal</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-7">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3935.848452856127!2d76.60923757478591!3d9.434687490643745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b062540a074aa51%3A0x5e5c81f02717ad2c!2sSuryaputhra%20Safaries!5e0!3m2!1sen!2sbd!4v1739769637538!5m2!1sen!2sbd" width="100%" height="450" style="border:0; filter: grayscale(100%);" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
                 </div>
-            </div>
+            </section>
         </div>
 
-        <!-- BOOKING OVERLAY -->
-        <div id="booking" class="page-view d-none">
-            <section class="booking-section">
+        <!-- CONTACT PAGE -->
+        <div id="contact" class="page-view">
+            <section class="section" style="padding-top: 120px;">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <span class="section-subtitle">Get in Touch</span>
+                        <h2 class="section-heading">Contact Us</h2>
+                        <p class="section-description">Have questions? We're here to help plan your perfect trip</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-right">
+                            <div class="feature-card h-100">
+                                <div class="feature-icon">
+                                    <i class="bi bi-geo-alt"></i>
+                                </div>
+                                <h4>Visit Us</h4>
+                                <p>Kunnamthanam, Changanassery<br>Kottayam District, Kerala - 686 510</p>
+                                <a href="https://maps.app.goo.gl/nBLzXtphiPG9hTyUA" target="_blank" class="text-accent">View on Google Maps →</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up">
+                            <div class="feature-card h-100">
+                                <div class="feature-icon">
+                                    <i class="bi bi-telephone"></i>
+                                </div>
+                                <h4>Call Us</h4>
+                                <p>Phone & WhatsApp<br><a href="tel:+919961741661" class="text-accent">+91 9961741661</a></p>
+                                <p class="small text-muted mt-2">Available 24/7 for your travel needs</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4" data-aos="fade-left">
+                            <div class="feature-card h-100">
+                                <div class="feature-icon">
+                                    <i class="bi bi-envelope"></i>
+                                </div>
+                                <h4>Email Us</h4>
+                                <p><a href="mailto:Info@suryaputhrasafaries.com" class="text-accent">Info@suryaputhrasafaries.com</a></p>
+                                <p class="small text-muted mt-2">We typically respond within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-12" data-aos="fade-up">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3935.848452856127!2d76.60923757478591!3d9.434687490643745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b062540a074aa51%3A0x5e5c81f02717ad2c!2sSuryaputhra%20Safaries!5e0!3m2!1sen!2sbd!4v1739769637538!5m2!1sen!2sbd" width="100%" height="400" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- BOOKING PAGE -->
+        <div id="booking" class="page-view">
+            <section class="booking-section" style="padding-top: 120px;">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
-                            <div class="section-header text-white text-center mb-4">
-                                <span class="text-warning text-uppercase letter-spacing-2 fw-bold small d-block mb-3">Quick Booking</span>
-                                <h2 class="display-5 fw-bold mt-2 mb-3">Book Your Trip</h2>
-                                <p class="text-white-50">Fill in the details below and we'll get back to you with the best package for your destination</p>
+                            <div class="text-center mb-5" data-aos="fade-up">
+                                <span class="hero-subtitle">Reservation</span>
+                                <h2 class="hero-title">Book Your Trip</h2>
+                                <p class="hero-description">Fill in the details below and we'll get back to you with the best package for your destination</p>
                             </div>
-                            <form class="booking-form" onsubmit="handleBooking(event)">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="text" name="name" class="w-100" placeholder="Full Name" required>
+                            <div class="booking-card" data-aos="zoom-in">
+                                <form id="bookingForm" onsubmit="handleBooking(event)">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" name="fullname" class="form-control-custom w-100" placeholder="Full Name" required pattern="[A-Za-z\s]{3,50}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="tel" name="phone" class="form-control-custom w-100" placeholder="Phone Number" required pattern="[0-9]{10}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" name="email" class="form-control-custom w-100" placeholder="Email Address" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" name="date" class="form-control-custom w-100" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <select name="destination" class="form-select-custom w-100" required>
+                                                <option value="" disabled selected>Select Destination</option>
+                                                <option value="Munnar">Munnar</option>
+                                                <option value="Ooty">Ooty</option>
+                                                <option value="Wayanad">Wayanad</option>
+                                                <option value="Kodaikanal">Kodaikanal</option>
+                                                <option value="Mysore">Mysore</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea name="message" class="form-control-custom w-100" rows="4" placeholder="Special Requests (Optional)" maxlength="500"></textarea>
+                                        </div>
+                                        <div class="col-12 text-center mt-4">
+                                            <button type="submit" class="btn btn-accent btn-lg px-5">Confirm Booking</button>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <input type="tel" name="phone" class="w-100" placeholder="Phone Number" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="email" name="email" class="w-100" placeholder="Email Address" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="date" name="date" class="w-100" required>
-                                    </div>
-                                    <div class="col-12">
-                                        <select name="dest" class="w-100" required>
-                                            <option value="" disabled selected>Select Destination</option>
-                                            <option value="Munnar">Munnar</option>
-                                            <option value="Ooty">Ooty</option>
-                                            <option value="Wayanad">Wayanad</option>
-                                            <option value="Kodaikanal">Kodaikanal</option>
-                                            <option value="Mysore">Mysore</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea name="msg" class="w-100" rows="3" placeholder="Additional Requests"></textarea>
-                                    </div>
-                                    <div class="col-12 text-center mt-4">
-                                        <button type="submit" class="btn-luxury bg-white text-dark border-white">Confirm Booking</button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-6">
                     <div class="footer-logo">
                         <img src="img/logo.png" alt="Logo">
                     </div>
-                    <p>Based in Kerala, we specialize in affordable and reliable travel services across South India. Whether you're planning a weekend getaway or a week-long family trip, we've got you covered.</p>
-                    <div class="mt-4">
-                        <a href="https://www.facebook.com/groups/1394493844234708/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/suryaputhra_safaries_official/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://youtube.com/@suryaputhrasafaries7511" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <p class="mb-4">Based in Kerala, we specialize in affordable and reliable travel services across South India. Whether you're planning a weekend getaway or a week-long family trip, we've got you covered.</p>
+                    <div>
+                        <a href="https://www.facebook.com/groups/1394493844234708/" target="_blank" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/suryaputhra_safaries_official/" target="_blank" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="https://youtube.com/@suryaputhrasafaries7511" target="_blank" class="social-link"><i class="bi bi-youtube"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 offset-lg-1">
-                    <h5 class="footer-heading">Explore</h5>
-                    <div class="footer-links">
-                        <a href="#home" onclick="router.navigate('home', event); return false;">Home</a>
-                        <a href="#about" onclick="router.navigate('about', event); return false;">About Us</a>
-                        <a href="#gallery" onclick="router.navigate('gallery', event); return false;">Gallery</a>
-                        <a href="#contact" onclick="router.navigate('contact', event); return false;">Contact</a>
-                        <a href="#booking" onclick="router.navigate('booking', event); return false;">Book Now</a>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <a href="#home" class="footer-link" onclick="navigateTo('home', event)">Home</a>
+                    <a href="#about" class="footer-link" onclick="navigateTo('about', event)">About Us</a>
+                    <a href="#gallery" class="footer-link" onclick="navigateTo('gallery', event)">Gallery</a>
+                    <a href="#contact" class="footer-link" onclick="navigateTo('contact', event)">Contact</a>
+                    <a href="#booking" class="footer-link" onclick="navigateTo('booking', event)">Book Now</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-heading">Gallery</h5>
+                    <div class="row g-2">
+                        <div class="col-4">
+                            <img src="img/p1.jpg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <div class="col-4">
+                            <img src="img/p2.jpg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <div class="col-4">
+                            <img src="img/p3.jpg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <div class="col-4">
+                            <img src="img/munnar.jpg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <div class="col-4">
+                            <img src="img/ooty.jpg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <div class="col-4">
+                            <img src="img/wayanad.jpg" alt="Gallery" class="gallery-thumb">
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-2">
-                    <h5 class="footer-heading">Information</h5>
-                    <div class="footer-links">
-                        <a href="#contact" onclick="router.navigate('contact', event); return false;">Contact Us</a>
-                        <a href="tel:+919961741661">Call: +91 9961741661</a>
-                        <a href="mailto:Info@suryaputhrasafaries.com">Email Us</a>
-                    </div>
-                </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6">
                     <h5 class="footer-heading">Contact Info</h5>
                     <p class="mb-2"><i class="bi bi-geo-alt me-2"></i>Kunnamthanam, Changanassery<br><span class="ms-4">Kottayam, Kerala</span></p>
-                    <p class="mb-2"><i class="bi bi-telephone me-2"></i><a href="tel:+919961741661" class="text-white text-decoration-none">+91 9961741661</a></p>
-                    <p class="mb-0"><i class="bi bi-envelope me-2"></i><a href="mailto:Info@suryaputhrasafaries.com" class="text-white text-decoration-none">Info@suryaputhrasafaries.com</a></p>
+                    <p class="mb-2"><i class="bi bi-telephone me-2"></i><a href="tel:+919961741661" class="footer-link d-inline">+91 9961741661</a></p>
+                    <p class="mb-0"><i class="bi bi-envelope me-2"></i><a href="mailto:Info@suryaputhrasafaries.com" class="footer-link d-inline">Info@suryaputhrasafaries.com</a></p>
                 </div>
             </div>
-            <div class="border-top border-secondary pt-4 mt-5 text-center">
-                <p class="mb-0">&copy; 2023 Suryaputhra Safaries. All Rights Reserved.</p>
+            <div class="border-top border-secondary pt-4 text-center">
+                <p class="mb-0 text-muted">&copy; 2024 Suryaputhra Safaries. All Rights Reserved. Designed by Custom_MODZ</p>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="btn btn-accent" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%; display: none; z-index: 1000; border: none; box-shadow: var(--shadow-lg);">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
-        AOS.init({ duration: 800, once: true });
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
 
         // Preloader
-        window.addEventListener('load', () => {
-            setTimeout(() => document.getElementById('preloader').style.display = 'none', 800);
-            
-            // Set min date
-            const d = new Date().toISOString().split('T')[0];
-            const dateInput = document.querySelector('input[type="date"]');
-            if(dateInput) dateInput.setAttribute('min', d);
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(function() {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }
+            }, 500);
         });
 
-        // Router with Bootstrap integration
-        const router = {
-            navigate: (id, event) => {
-                // Prevent default if event is provided
-                if (event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                
-                window.scrollTo({top:0, behavior:'smooth'});
-                document.querySelectorAll('.page-view').forEach(p => {
-                    p.classList.remove('d-none');
-                    if(p.id !== id) p.classList.add('d-none');
-                });
-                
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                const active = document.querySelector(`.nav-link[onclick*="'${id}'"], .nav-link[href="#${id}"]`);
-                if(active) active.classList.add('active');
-                
-                // Close mobile navbar after navigation
-                const navbarCollapse = document.getElementById('navContent');
-                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                    if (bsCollapse) {
-                        bsCollapse.hide();
-                    } else {
-                        const newCollapse = new bootstrap.Collapse(navbarCollapse, {toggle: false});
-                        newCollapse.hide();
-                    }
-                }
-                
-                // Update URL hash
-                if (history.pushState) {
-                    history.pushState(null, null, '#' + id);
+        // Set minimum date for booking form
+        window.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.querySelector('input[type="date"]');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+        });
+
+        // Navigation Function
+        function navigateTo(pageId, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            // Hide all pages
+            document.querySelectorAll('.page-view').forEach(function(page) {
+                page.classList.remove('active');
+            });
+
+            // Show target page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(function(link) {
+                link.classList.remove('active');
+            });
+
+            const activeLink = document.querySelector('.nav-link[href="#' + pageId + '"]');
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
+            // Close mobile navbar
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                if (bsCollapse) {
+                    bsCollapse.hide();
                 }
             }
-        };
-        
-        // Handle all navigation links
-        document.addEventListener('DOMContentLoaded', function() {
-            // Handle anchor clicks with router.navigate
-            document.querySelectorAll('a[onclick*="router.navigate"], button[onclick*="router.navigate"]').forEach(element => {
-                element.addEventListener('click', function(e) {
-                    const match = this.getAttribute('onclick').match(/router\.navigate\(['"]([^'"]+)['"]/);
-                    if (match) {
-                        router.navigate(match[1], e);
-                    }
-                });
+
+            // Scroll to top smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-            
-            // Handle hash-based navigation
-            window.addEventListener('hashchange', function() {
-                const hash = window.location.hash.substring(1);
-                if (hash && document.getElementById(hash)) {
-                    router.navigate(hash);
-                }
-            });
-            
-            // Initial page load
+
+            // Update URL hash
+            if (history.pushState) {
+                history.pushState(null, null, '#' + pageId);
+            }
+        }
+
+        // Handle hash navigation on page load
+        window.addEventListener('DOMContentLoaded', function() {
             const hash = window.location.hash.substring(1);
             if (hash && document.getElementById(hash)) {
-                router.navigate(hash);
+                navigateTo(hash);
             }
         });
 
-        // WhatsApp Booking
-        function handleBooking(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerText;
-            btn.innerText = "Processing...";
-            btn.disabled = true;
+        // Handle browser back/forward buttons
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                navigateTo(hash);
+            } else {
+                navigateTo('home');
+            }
+        });
 
-            const fd = new FormData(e.target);
-            const data = Object.fromEntries(fd.entries());
-            
-            for(let key in data) data[key] = data[key].replace(/</g,"&lt;").replace(/>/g,"&gt;");
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNavbar');
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
 
-            const msg = `*New Booking Request* ✈️%0A` +
-                        `👤 Name: ${data.name}%0A` +
-                        `📞 Phone: ${data.phone}%0A` +
-                        `📧 Email: ${data.email}%0A` +
-                        `📅 Date: ${data.date}%0A` +
-                        `📍 Dest: ${data.dest}%0A` +
-                        `📝 Note: ${data.msg || 'N/A'}`;
-            
-            setTimeout(() => {
-                window.open(`https://wa.me/919947742020?text=${msg}`, '_blank');
-                btn.innerText = originalText;
-                btn.disabled = false;
-                e.target.reset();
-            }, 1000);
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (backToTop) {
+                if (window.scrollY > 300) {
+                    backToTop.style.display = 'flex';
+                    backToTop.style.alignItems = 'center';
+                    backToTop.style.justifyContent = 'center';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            }
+        });
+
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Handle booking form submission
+        function handleBooking(event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const form = event.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+
+            // Get form data
+            const formData = new FormData(form);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value.trim();
+            }
+
+            // Validate
+            if (!data.fullname || !data.phone || !data.email || !data.date || !data.destination) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Sanitize input
+            for (let key in data) {
+                data[key] = data[key].replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            }
+
+            // Update button
+            submitButton.textContent = 'Processing...';
+            submitButton.disabled = true;
+
+            // Format WhatsApp message
+            const phoneNumber = '919947742020';
+            const message = `*New Booking Request* ✈️%0A%0A` +
+                `👤 *Name:* ${data.fullname}%0A` +
+                `📞 *Phone:* ${data.phone}%0A` +
+                `📧 *Email:* ${data.email}%0A` +
+                `📅 *Date:* ${data.date}%0A` +
+                `📍 *Destination:* ${data.destination}%0A` +
+                `📝 *Message:* ${data.message || 'None'}`;
+
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+            // Open WhatsApp after short delay
+            setTimeout(function() {
+                window.open(whatsappUrl, '_blank');
+                alert('Redirecting to WhatsApp to confirm your booking!');
+                
+                // Reset form and button
+                form.reset();
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+
+                // Reset date min attribute
+                const dateInput = form.querySelector('input[type="date"]');
+                if (dateInput) {
+                    const today = new Date().toISOString().split('T')[0];
+                    dateInput.setAttribute('min', today);
+                }
+            }, 500);
+        }
+
+        // Prevent form resubmission
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
         }
     </script>
 </body>
+</html>
+
 </html>
