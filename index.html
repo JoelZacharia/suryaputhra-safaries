@@ -394,7 +394,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#" onclick="router.navigate('home')">
+            <a class="navbar-brand" href="#home" onclick="router.navigate('home', event); return false;">
                 <img src="img/logo.png" alt="Suryaputhra">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
@@ -402,12 +402,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navContent">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link active" onclick="router.navigate('home')" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" onclick="router.navigate('about')" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link" onclick="router.navigate('gallery')" href="#">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" onclick="router.navigate('contact')" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#home" onclick="router.navigate('home', event); return false;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about" onclick="router.navigate('about', event); return false;">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery" onclick="router.navigate('gallery', event); return false;">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" onclick="router.navigate('contact', event); return false;">Contact</a></li>
                     <li class="nav-item ms-lg-4">
-                        <button class="btn-luxury" onclick="router.navigate('booking')">Book Now</button>
+                        <a href="#booking" class="btn-luxury text-decoration-none" onclick="router.navigate('booking', event); return false;">Book Now</a>
                     </li>
                 </ul>
             </div>
@@ -431,8 +431,8 @@
                     <h1 class="hero-title">Your Journey,<br>Our Expertise</h1>
                     <p class="text-white mb-4" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px;">Travel to Munnar, Ooty, Wayanad & more with reliable hotel bookings and comfortable cab services</p>
                     <div style="margin-top: 40px;">
-                        <button onclick="router.navigate('booking')" class="btn-luxury bg-white text-dark border-white me-3">Book Your Trip</button>
-                        <button onclick="router.navigate('contact')" class="btn-luxury bg-transparent border-white">Contact Us</button>
+                        <a href="#booking" onclick="router.navigate('booking', event); return false;" class="btn-luxury bg-white text-dark border-white me-3 text-decoration-none">Book Your Trip</a>
+                        <a href="#contact" onclick="router.navigate('contact', event); return false;" class="btn-luxury bg-transparent border-white text-decoration-none">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -483,7 +483,7 @@
                                 <h2>We Create<br>Timeless Journeys</h2>
                             </div>
                             <p class="text-secondary mb-4">Based in Kunnamthanam, Kerala, we've been organizing memorable trips across South India since 2016. Whether it's a family vacation to Ooty, a honeymoon in Munnar, or an adventure in Wayanad, we handle everything—from hotel bookings to cab arrangements—so you can focus on creating memories.</p>
-                            <button onclick="router.navigate('about')" class="btn-luxury text-dark border-dark">Read Our Story</button>
+                            <a href="#about" onclick="router.navigate('about', event); return false;" class="btn-luxury text-dark border-dark text-decoration-none">Read Our Story</a>
                         </div>
                     </div>
                 </div>
@@ -671,18 +671,19 @@
                 <div class="col-lg-2 offset-lg-1">
                     <h5 class="footer-heading">Explore</h5>
                     <div class="footer-links">
-                        <a href="#" onclick="router.navigate('home')">Home</a>
-                        <a href="#" onclick="router.navigate('about')">About Us</a>
-                        <a href="#" onclick="router.navigate('gallery')">Gallery</a>
-                        <a href="#" onclick="router.navigate('contact')">Contact</a>
+                        <a href="#home" onclick="router.navigate('home', event); return false;">Home</a>
+                        <a href="#about" onclick="router.navigate('about', event); return false;">About Us</a>
+                        <a href="#gallery" onclick="router.navigate('gallery', event); return false;">Gallery</a>
+                        <a href="#contact" onclick="router.navigate('contact', event); return false;">Contact</a>
+                        <a href="#booking" onclick="router.navigate('booking', event); return false;">Book Now</a>
                     </div>
                 </div>
                 <div class="col-lg-2">
-                    <h5 class="footer-heading">Legal</h5>
+                    <h5 class="footer-heading">Information</h5>
                     <div class="footer-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Use</a>
-                        <a href="#">Cancellation</a>
+                        <a href="#contact" onclick="router.navigate('contact', event); return false;">Contact Us</a>
+                        <a href="tel:+919961741661">Call: +91 9961741661</a>
+                        <a href="mailto:Info@suryaputhrasafaries.com">Email Us</a>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -715,9 +716,15 @@
             if(dateInput) dateInput.setAttribute('min', d);
         });
 
-        // Router
+        // Router with Bootstrap integration
         const router = {
-            navigate: (id) => {
+            navigate: (id, event) => {
+                // Prevent default if event is provided
+                if (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                
                 window.scrollTo({top:0, behavior:'smooth'});
                 document.querySelectorAll('.page-view').forEach(p => {
                     p.classList.remove('d-none');
@@ -725,36 +732,53 @@
                 });
                 
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                const active = document.querySelector(`.nav-link[onclick*="'${id}'"]`);
+                const active = document.querySelector(`.nav-link[onclick*="'${id}'"], .nav-link[href="#${id}"]`);
                 if(active) active.classList.add('active');
                 
                 // Close mobile navbar after navigation
                 const navbarCollapse = document.getElementById('navContent');
                 if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-                        toggle: false
-                    });
-                    bsCollapse.hide();
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) {
+                        bsCollapse.hide();
+                    } else {
+                        const newCollapse = new bootstrap.Collapse(navbarCollapse, {toggle: false});
+                        newCollapse.hide();
+                    }
+                }
+                
+                // Update URL hash
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + id);
                 }
             }
         };
         
-        // Also close navbar when clicking nav links directly
+        // Handle all navigation links
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link, .btn-luxury[onclick*="router.navigate"]');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    const navbarCollapse = document.getElementById('navContent');
-                    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                        setTimeout(() => {
-                            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                            if (bsCollapse) {
-                                bsCollapse.hide();
-                            }
-                        }, 100);
+            // Handle anchor clicks with router.navigate
+            document.querySelectorAll('a[onclick*="router.navigate"], button[onclick*="router.navigate"]').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    const match = this.getAttribute('onclick').match(/router\.navigate\(['"]([^'"]+)['"]/);
+                    if (match) {
+                        router.navigate(match[1], e);
                     }
                 });
             });
+            
+            // Handle hash-based navigation
+            window.addEventListener('hashchange', function() {
+                const hash = window.location.hash.substring(1);
+                if (hash && document.getElementById(hash)) {
+                    router.navigate(hash);
+                }
+            });
+            
+            // Initial page load
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                router.navigate(hash);
+            }
         });
 
         // WhatsApp Booking
